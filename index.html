@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Project Board</title>
+    <link rel="stylesheet" href="assets/styles/app.css" />
+    <link rel="stylesheet" href="assets/styles/project-details.css" />
+    <link rel="stylesheet" href="assets/styles/projects.css" />
+    <script type="module" src="/assets/scripts/app.js"></script>
+    <script type="module" src="/assets/scripts/project.js"></script>
+    <script type="module" src="/assets/scripts/creationUI.js"></script>
+    <script type="module" src="/assets/scripts/project-template.js"></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <h1>Project Planner</h1>
+    </header>
+    <section class="project-details card">
+      <label for="title">Title</label>
+      <input type="text" name="title" id="title" />
+      <label for="project-content">Details</label>
+      <input type="text" name="details" id="project-content"/>
+      <label for="extra-info">Extra information</label>
+      <input type="text" name="extra-info" id="extra-info" />
+      <button id="add-project">Submit</button>
+    </section>
+    <section id="projects" class="projects">
+      <section id="active-projects">
+        <header>
+          <h2>Active Projects</h2>
+        </header>
+        <ul></ul>
+      </section>
+      <section id="finished-projects">
+        <header>
+          <h2>Finished Projects</h2>
+        </header>
+        <ul></ul>
+      </section>
+    </section>
+  </body>
+</html>
