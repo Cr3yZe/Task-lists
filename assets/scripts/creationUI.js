@@ -1,4 +1,5 @@
-import { Projects } from "./project.js";
+import { Projects } from "./active-projects.js";
+import { Finished } from "./finished-projects.js";
 
 export class UiProject {
   #title;
@@ -33,9 +34,18 @@ export class UiProject {
     description.innerHTML = this.#description;
     li.append(description);
 
+    const extraInfoElement = document.createElement('div');
+    extraInfoElement.classList.add('more-info-hidden');
+    const message = document.createElement('p');
+    message.innerHTML = `${this.#extraInfo}`;
+    extraInfoElement.append(message);
+    li.append(extraInfoElement);
+
     const buttonInfo = document.createElement('button');
     buttonInfo.innerHTML = 'More Info'
     buttonInfo.className = 'alt';
+    buttonInfo.addEventListener('mouseover', this.checkState.bind(this, UiProject));
+    buttonInfo.addEventListener('mouseout', this.hideMoreInfo.bind(this, UiProject));
     li.append(buttonInfo);
 
     if (!this.#state === false) {
@@ -50,16 +60,29 @@ export class UiProject {
     buttonActive.innerHTML = 'Activate'
     buttonActive.addEventListener('click', this.activateTask.bind(this, UiProject));
     li.append(buttonActive);
+    console.log(li);
     return li;
   }
   
   finishTask() {
-    console.log(`${this.#title} is finished!`);
     Projects.finishTask(this.#id);
   }
 
   activateTask() {
-    console.log(`${this.#title} is being activated!`);
-    Projects.activateTask(this.#id);
+    Projects.activateTask(this.#title, this.#description, this.#extraInfo);
+    Finished.appendActivateUI(this.#id.toString());
+  }
+
+  checkState () {
+    if (!this.#state === false) {
+      Projects.showMoreInfo(this.#id.toString());
+      return;
+    }
+
+    Finished.showMoreInfo(this.#id);
+  }
+
+  hideMoreInfo() {
+
   }
 }

@@ -1,4 +1,4 @@
-import { Projects } from "./project.js";
+import { Projects } from "./active-projects.js";
 import { Project } from "./project-template.js";
 
 export const activeSection = document.getElementById('active-projects').querySelector('ul');

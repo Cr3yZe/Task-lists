@@ -55,7 +55,7 @@ section ul {
   overflow: scroll;
 }
 
-section > h2 {
+section>h2 {
   color: white;
   margin: 0;
 }
@@ -73,6 +73,20 @@ button.alt {
   background: white;
   color: #ff0062;
   margin-right: 20px;
+  position: relative;
+}
+
+.more-info-hidden {
+  display: none;
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background-color: gray;
+  border-radius: 10 / 95;
+}
+
+.more-info-vissible {
+  display: block;
 }
 
 button:focus {
@@ -97,7 +111,7 @@ button:active {
   border: 1px solid #870099;
 }
 
-#active-projects > header {
+#active-projects>header {
   background: #870099;
   padding: 1rem;
   display: flex;
@@ -114,7 +128,7 @@ button:active {
   border: 1px solid #535353;
 }
 
-#finished-projects > header {
+#finished-projects>header {
   background: #535353;
   padding: 1rem;
   display: flex;
@@ -126,4 +140,3 @@ button:active {
   color: white;
   margin: 0;
 }
-
