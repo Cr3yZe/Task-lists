@@ -44,7 +44,7 @@ export class UiProject {
     const buttonInfo = document.createElement('button');
     buttonInfo.innerHTML = 'More Info'
     buttonInfo.className = 'alt';
-    buttonInfo.addEventListener('mouseover', this.checkState.bind(this, UiProject));
+    buttonInfo.addEventListener('mouseenter', this.checkState.bind(this, UiProject));
     buttonInfo.addEventListener('mouseout', this.hideMoreInfo.bind(this, UiProject));
     li.append(buttonInfo);
 
@@ -61,9 +61,10 @@ export class UiProject {
     buttonActive.addEventListener('click', this.activateTask.bind(this, UiProject));
     li.append(buttonActive);
     console.log(li);
+
     return li;
   }
-  
+
   finishTask() {
     Projects.finishTask(this.#id);
   }
@@ -73,16 +74,18 @@ export class UiProject {
     Finished.appendActivateUI(this.#id.toString());
   }
 
-  checkState () {
+  checkState() {
+    console.log(true);
     if (!this.#state === false) {
       Projects.showMoreInfo(this.#id.toString());
       return;
     }
 
-    Finished.showMoreInfo(this.#id);
+    Finished.showMoreInfo(this.#id.toString());
   }
 
   hideMoreInfo() {
-
+    Projects.hideMoreInfo();
+    Finished.hideMoreInfo();
   }
 }

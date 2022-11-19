@@ -6,7 +6,6 @@ import { Project } from "./project-template.js";
 export class Projects {
   static #projects = [];
   static #projectsElements = [];
-  static #projectsObjects = [];
 
   static set addProject(project) {
     this.#projects.push(project);
@@ -31,7 +30,6 @@ export class Projects {
       const { title, details, extraInfo } = value;
 
       const element = new UiProject(title, details, extraInfo, 'li', index, 'card', true)
-      this.#projectsObjects.push(element);
       projects.push(element.createElement());
     })
     
@@ -75,6 +73,12 @@ export class Projects {
         value.querySelector('div').classList.add('more-info-vissible');
         console.log(value);
       }
+    })
+  }
+
+  static hideMoreInfo() {
+    this.#projectsElements.forEach((value, index) => {
+      value.querySelector('div').classList.remove('more-info-vissible')
     })
   }
 }
